@@ -1,36 +1,51 @@
 package com.jijil.string.pattern;
-
+//https://leetcode.com/problems/palindrome-number/submissions/
 public class IntegerPalindrome {
 
     public static void main(String[] args) {
         Solution sol =  new Solution();
-        System.out.println(sol.isPalindrome(145411));
+        System.out.println(sol.isPalindrome(1000000001
+        ));
+
     }
 }
-
 
 class Solution {
     public boolean isPalindrome(int x) {
 
-        if (x < 0) return false;
-        int reversedNumber = 0;
-        int u = x;
-        int rem = x;
-        //121
-        while (u > 10) {
-
-            rem = u % 10; //1 //2 // 1
-
-            u = (u - rem) / 10; //12 //1 // 0
-
-            reversedNumber = (rem + reversedNumber) * 10; //10 //120 // 1210
 
 
+        /*
+
+        Reminder with 10 gives 1's place = y
+        y*10;
+        Divide by 10 gives the remaining no.
+
+        Do this till Division value returns 0
+
+
+        */
+        if (x < 0) {
+            return false;
         }
 
+        long y = 0 ;
+        long i = x ;
 
-        return x == reversedNumber + u;
+        while(i != 0 ){
+
+            y = 10 * (i%10 + y) ;
+            i = i/10;
+
+            System.out.println("y : " + y + " :: i :"  + i);
+        }
+
+        return x == y/10 ;
+
+
 
     }
+
+
 
 }
