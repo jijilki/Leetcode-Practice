@@ -113,8 +113,8 @@ class BasketBallJerseyShop extends JerseyShop{
 abstract class Jersey {
 
     public String jerseyName;
-    private Integer jerseyNo;
-    private String jerseySize;
+    public Integer jerseyNo;
+    public String jerseySize;
 
 
     public abstract  void makeJersey();
@@ -142,12 +142,14 @@ class SoccerMenJersey extends   Jersey{
 
     @Override
     public void printJerseyNameNo(String jerseyName , int jerseyNo) {
+        this.jerseyName = jerseyName;
+        this.jerseyNo = jerseyNo;
         System.out.println("Print Soccer Jersey with  Name :" +  jerseyName + " and No :" +jerseyNo);
     }
 
     @Override
     public void packJersey() {
-        System.out.println("Pack Jersey");
+        System.out.println("Pack Jersey with Jersey name" + this.jerseyName);
     }
 }
 

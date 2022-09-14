@@ -1,11 +1,7 @@
 package com.jijil.designpatterns;
 
-import com.jijil.designpatterns.impl.Circle;
-import com.jijil.designpatterns.impl.Square;
-import com.jijil.designpatterns.intr.Shape;
-import com.jijil.designpatterns.impl.Rectangle;
 
-import static com.jijil.designpatterns.intr.Shape.*;
+import static com.jijil.designpatterns.Shape.*;
 
 public class SimpleFactory {
 
@@ -50,3 +46,39 @@ class FactoryClient {
     }
 
 }
+
+class Circle implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Rectangle implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a Rectangle");
+    }
+}
+
+class Square implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a shape");
+    }
+}
+
+interface Shape {
+
+    public static final String CIRCLE = "circle";
+    public static final String SQUARE = "square";
+    public static final String RECTANGLE = "rectangle";
+
+    void draw();
+
+
+}
+
+
+
+

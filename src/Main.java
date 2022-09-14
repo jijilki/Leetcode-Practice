@@ -1,4 +1,4 @@
-import com.jijil.string.pattern.LongestPalindrome;
+import com.jijil.leetcode.LongestPalindrome;
 
 
 import java.util.logging.Level;
