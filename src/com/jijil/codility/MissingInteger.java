@@ -18,6 +18,7 @@ public class MissingInteger {
 
         MissingInteger scratch = new MissingInteger();
         System.out.println(scratch.solution2(new int[] {-1,-3}));
+        System.out.println(scratch.solution2(new int[] {2,6 ,1,3, 4, 5, 8,1,2,3}));
 
     }
 
@@ -51,7 +52,7 @@ public class MissingInteger {
     public static int solution2(int[] A) {
 
         TreeSet<Integer> treeSet = IntStream.of(A).boxed().collect(Collectors.toCollection(TreeSet::new));
-
+        System.out.println(treeSet);
         int counter = 1;
         while(treeSet.contains(counter)){
             counter++ ;
