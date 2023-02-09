@@ -52,6 +52,7 @@ public class MissingInteger {
     public static int solution2(int[] A) {
 
         TreeSet<Integer> treeSet = IntStream.of(A).boxed().collect(Collectors.toCollection(TreeSet::new));
+
         System.out.println(treeSet);
         int counter = 1;
         while(treeSet.contains(counter)){

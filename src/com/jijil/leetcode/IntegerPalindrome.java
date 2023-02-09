@@ -4,7 +4,7 @@ public class IntegerPalindrome {
 
     public static void main(String[] args) {
         Solution sol =  new Solution();
-        System.out.println(sol.isPalindrome(1000000001
+        System.out.println(sol.isPalindrome(12341
         ));
 
     }
@@ -33,7 +33,7 @@ class Solution {
         long i = x ;
 
         while(i != 0 ){
-
+//12341
             y = 10 * (i%10 + y) ;
             i = i/10;
 

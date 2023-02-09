@@ -34,10 +34,13 @@ public class Singleton {
 
 }
 
+
 class TestClient {
 
 
     public static void main(String[] args) {
+
+
 
         Singleton singleton = Singleton.getInstance("Foo");
         Singleton anotherSingleton = Singleton.getInstance("Boo");

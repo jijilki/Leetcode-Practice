@@ -65,6 +65,8 @@ class JavaConcurrencyEx3Future  {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
+
+
         // Instantiate Callable Class
 
         ArithmeticExtService sumService = new SumExternalService(args[0], args[1]);
@@ -73,7 +75,7 @@ class JavaConcurrencyEx3Future  {
 
         // Create Object for Future Task
 
-        FutureTask<Integer> sumExtServiceFutTask = new FutureTask<>(sumService);
+        FutureTask<Integer> sumExtServiceFutTask = new FutureTask<>(sumService); //Object is something which implements Callable.
         FutureTask<Integer> productExtServiceFutTask = new FutureTask<>(productService);
 
         //Executor service Object
@@ -84,6 +86,7 @@ class JavaConcurrencyEx3Future  {
 
         executor.execute(sumExtServiceFutTask);
         executor.execute(productExtServiceFutTask);
+
 
 
         // Checks for future task completion and further processing
@@ -102,6 +105,10 @@ class JavaConcurrencyEx3Future  {
 
 
         }
+
+
+
+
     }
 
 }
