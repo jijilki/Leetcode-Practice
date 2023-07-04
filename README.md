@@ -1,2 +1,2 @@
 # Leetcode-Learning
-Leet code learning and Design Pattern practice
+Leet code learning and Design Pattern practice.
