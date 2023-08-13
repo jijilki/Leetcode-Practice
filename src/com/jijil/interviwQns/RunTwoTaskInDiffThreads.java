@@ -66,6 +66,34 @@ public class RunTwoTaskInDiffThreads extends Thread{
 
 }
 
+
+class RunTwoTaskInDiffThreadsUsingLambda extends  Thread{
+
+    /** Used lambda to call the functional interface of the Thread class instead of Anonymous inner class in earlier example, Better performance in lambda way as no seperate class need not be created*/
+    public static void main(String[] args) {
+
+        Thread t1 = new Thread( () -> {
+            for (int i =0; i< 100 ;i++){
+                if(i%2==0){
+                    System.out.println(i + "is even number");
+                }
+            }
+
+        } );
+
+        Thread t2 = new Thread(()->{
+            for (int i =0; i< 100 ;i++){
+                if(i%2!=0){
+                    System.out.println(i + "is odd number");
+                }
+            }
+        });
+
+        t1.start();
+        t2.start();
+    }
+
+}
 class  RunTwoTaskInDiffThreads2 extends Thread {
 
     public static void main(String[] args) {
