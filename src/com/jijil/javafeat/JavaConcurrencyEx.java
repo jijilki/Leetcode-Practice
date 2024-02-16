@@ -69,8 +69,11 @@ class JavaConcurrencyEx3Future  {
 
         // Instantiate Callable Class
 
-        ArithmeticExtService sumService = new SumExternalService(args[0], args[1]);
+     /*   ArithmeticExtService sumService = new SumExternalService(args[0], args[1]);
         ArithmeticExtService productService = new ProductExternalService(args[0], args[1]);
+*/
+        ArithmeticExtService sumService = new SumExternalService("1", "10");
+        ArithmeticExtService productService = new ProductExternalService("2", "3");
 
 
         // Create Object for Future Task

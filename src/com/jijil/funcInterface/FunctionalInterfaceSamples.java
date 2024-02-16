@@ -1,9 +1,9 @@
 package com.jijil.funcInterface;
 
 import java.security.Provider;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 public class FunctionalInterfaceSamples {
 
@@ -51,6 +51,33 @@ public class FunctionalInterfaceSamples {
         ageMap.forEach(printNameAndLength);
         ageMap.forEach((name, nameLength) -> System.out.println("Length of Name of " + name + "is " + nameLength));
 
+        Predicate<Integer> isPositive = x-> x > 0;
+        System.out.println(13 + " is a positive number "  + isPositive.test(13));
+
+        // BiPredicate
+
+
+        BinaryOperator<Integer> binaryOperator = (x,y) -> x+y;
+        System.out.println(binaryOperator.apply(10,3));
+
+
+        /** Identify duplicate from list.*/
+        List<Integer> listInteger = Arrays.asList(112,111,118,112,210,118,210);
+        HashSet<Integer> hashSet = new HashSet<>();
+        List<Integer> dupElements = listInteger.stream().filter(x -> !hashSet.add(x)).collect(Collectors.toList());
+        System.out.println(dupElements);
+
+        /** Make a map with count of occurrence in list */
+
+        Map<Integer, Long> countMap = listInteger.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(countMap);
+
+        /** Print the second-largest Number */
+            //Remove duplicates
+        Integer secondLargest = listInteger.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).max(Comparator.naturalOrder()).get();
+            //Use findFirst
+        Integer secondLargest1 = listInteger.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+        System.out.println("Second largest number ::  " + secondLargest +"  " + secondLargest1);
 
 
 

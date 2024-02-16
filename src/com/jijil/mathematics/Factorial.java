@@ -4,10 +4,10 @@ public class Factorial {
 
 
     public static void main(String[] args) {
-        int factorial = getFactorial(4);
+        int factorial = getFactorial(10);
         System.out.println(factorial);
 
-        int zeroesInFactorial = getZeroesInFactorial(354);
+        int zeroesInFactorial = getZeroesInFactorial(20);
         System.out.println(zeroesInFactorial);
 
 
