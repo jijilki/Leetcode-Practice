@@ -64,12 +64,12 @@ public class JavaVersion21 {
 
 
         Thread t = new Thread();
-        t.isVirtual(); /** use --enable-preview to enable preview APIs */
+       // t.isVirtual(); /** use --enable-preview to enable preview APIs */
 
         //New Ways to create threads
-        Thread.ofPlatform();
-        Thread.ofVirtual();
-        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+        //Thread.ofPlatform();
+        //Thread.ofVirtual();
+        /*ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 
 
 
@@ -82,7 +82,7 @@ public class JavaVersion21 {
 
         Integer integer = future.resultNow();
         future.exceptionNow();
-        Future.State state = future.state();
+        Future.State state = future.state();*/
     }
 
         //AutoCloseble method. HttpClient etc are implementing this autoCloseble

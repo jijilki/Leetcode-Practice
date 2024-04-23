@@ -18,21 +18,29 @@ public class SortHashMapBasedOnValue {
         empMap.put("qas", new Employee("Appu" , 22L , 2000D));
         empMap.put("footballer", new Employee("Ziyech" , 22L , 2000D));
 
-
-
         System.out.println(empMap);
 
         //Create a list of Map entries
         List<Map.Entry<String, Employee>> listOfEmp = new LinkedList<> (empMap.entrySet());
 
 
-        //Sort the list
+        //Sort the list based on Value property Employee name. Used String1.compareTo(String2) here.
         Collections.sort(listOfEmp, new Comparator<Map.Entry<String, Employee>>() {
             @Override
             public int compare(Map.Entry<String, Employee> o1, Map.Entry<String, Employee> o2) {
-                return 0;
+                return o1.getValue().empName.compareTo(o2.getValue().empName);
             }
         });
+
+        //Sort the list based on Value property Employee id.
+       /* Collections.sort(listOfEmp, new Comparator<Map.Entry<String, Employee>>() {
+            @Override
+            public int compare(Map.Entry<String, Employee> o1, Map.Entry<String, Employee> o2) {
+               return o1.getValue().empId.compareTo(o2.getValue().empId);
+            }
+        });*/
+
+
 
         // Create a hashmap - Linked and add it back. LinkedHashmap to maintain insertion order
         Map<String, Employee> linkedHashEmpMap = new LinkedHashMap<>();

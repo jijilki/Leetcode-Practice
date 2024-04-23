@@ -1,6 +1,7 @@
 package com.jijil.javafeat;
 
 import java.util.concurrent.*;
+import java.util.function.ToIntBiFunction;
 
 //Using Extends Thread
 public class JavaConcurrencyEx extends Thread{

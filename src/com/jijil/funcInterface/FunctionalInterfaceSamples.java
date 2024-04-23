@@ -80,6 +80,13 @@ public class FunctionalInterfaceSamples {
         System.out.println("Second largest number ::  " + secondLargest +"  " + secondLargest1);
 
 
+        //Flat map :: Filter names with J. List<List<String>>
+
+        List<List<String>> name = Arrays.asList(Arrays.asList("John", "Martin"), Arrays.asList("Ram", "Seth"), Arrays.asList("Jack", "Wills"), Arrays.asList("Joe", "Dawn"));
+
+
+        List<String> j = name.stream().flatMap(x -> x.stream()).filter(x -> x.startsWith("J")).collect(Collectors.toList());
+        List<String> j1 = name.stream().flatMap(List::stream).filter(x -> x.startsWith("J")).collect(Collectors.toList());
 
     }
 
