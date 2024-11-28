@@ -2,9 +2,12 @@ import com.jijil.leetcode.LongestPalindrome;
 
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -13,33 +16,48 @@ public class Main {
         LongestPalindrome lp = new LongestPalindrome();
 
         String palindrome = lp.longestPalindrome("malayalam");
-        logger.log(Level.INFO, "Longest palindrome in String is {0} " , palindrome);
+        logger.log(Level.INFO, "Longest palindrome in String is {0} ", palindrome);
 
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(new Employee(100, "Sundar", 47, "North America", 10000));
         employeeList.add(new Employee(200, "Pichai", 25, "North America", 50000));
         employeeList.add(new Employee(300, "Larry", 30, "Asia", 20000));
-        employeeList.add(new Employee(400, "Page", 59, "Africa",18000));
+        employeeList.add(new Employee(400, "Page", 59, "Africa", 18000));
 
         List<String> listOfEmpNameHavingMore20KSal = employeeList.stream().filter(x -> x.getSal() > 20000).map(x -> x.getName()).collect(Collectors.toList());
         System.out.println(listOfEmpNameHavingMore20KSal);
 
-        Comparator<Employee> employeeComparator = (Employee e1 , Employee e2) ->  e1.getRegion().compareTo(e2.getRegion());
+        Comparator<Employee> employeeComparator = (Employee e1, Employee e2) -> e1.getRegion().compareTo(e2.getRegion());
 
 
         List<Employee> sortedList = employeeList.stream().sorted(employeeComparator).collect(Collectors.toList());
         System.out.println(sortedList);
 
 
-        Map<String,Employee> empMap = new HashMap<>();
+        Map<String, Employee> empMap = new HashMap<>();
 
-        employeeList.stream().forEach(e-> empMap.put(e.getName(),e));
+        employeeList.stream().forEach(e -> empMap.put(e.getName(), e));
 
         System.out.println(empMap);
+        //sort an array and print using streams, given that int[] arrayInt = new int []{1,2,4,5,6,7,8};
+        int[] arrayInt = new int[]{1, 2, 4, 5, 6, 7, 8};
+        /** Use of BOXED , For primitive Comparator cant be used otherwise**/
+        Comparator<Integer> comparator = (Integer a, Integer b) -> b - a;
+        Arrays.stream(arrayInt).distinct().boxed().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+        // Or custom comparator
+        Arrays.stream(arrayInt).distinct().boxed().sorted(comparator).forEach(System.out::println);
 
-
-
+        //Problem: Given a list of strings, group them into anagrams. For example,
+        //the input ["eat", "tea", "tan", "ate", "nat", "bat"] should return [[eat, tea, ate], [tan, nat], [bat]].
+        List<String> list = Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat");
+        Function<String, String> sortByChar =  sortByChar = (String str) -> {
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            return new String(charArray);
+        };
+        Map<String, List<String>> result = list.stream().collect(Collectors.groupingBy(sortByChar));
+        System.out.println(result.values());
 
     }
 }
