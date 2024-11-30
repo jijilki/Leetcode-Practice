@@ -59,6 +59,11 @@ public class Main {
         Map<String, List<String>> result = list.stream().collect(Collectors.groupingBy(sortByChar));
         System.out.println(result.values());
 
+
+        Set<Integer> set = new HashSet<>();
+        set.add(10);
+        set.add(10);
+        System.out.println(set);
     }
 }
 
