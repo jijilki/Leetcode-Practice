@@ -88,6 +88,11 @@ public class FunctionalInterfaceSamples {
         List<String> j = name.stream().flatMap(x -> x.stream()).filter(x -> x.startsWith("J")).collect(Collectors.toList());
         List<String> j1 = name.stream().flatMap(List::stream).filter(x -> x.startsWith("J")).collect(Collectors.toList());
 
+
+        // From a map , find the keys for which values having property name starting with P
+
+        // Reverse a map.
+
     }
 
 

@@ -8,6 +8,7 @@ import java.util.Set;
 /**
 LRU Cache using LinkedHashSet to preserve the order
  Least recently used cache
+ Use LRU when recent access is more relevant (e.g., session management, browser cache).
 **/
 public class LRUCache {
 

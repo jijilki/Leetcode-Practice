@@ -64,7 +64,26 @@ public class Main {
         set.add(10);
         set.add(10);
         System.out.println(set);
+
+
+        // Sort list of animals with second letter in their name.
+
+        List<String> animalList = Arrays.asList("Zebra","Cat","Dog","Lion","Tiger");
+        Comparator<String> animalComparator = new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.substring(1,o1.length()).compareTo(o2.substring(1,o2.length()));
+            }
+        };
+        Comparator<String> animalComparator1 =
+                Comparator.comparing(o -> o.substring(1));
+       // List<String> orderedList = animalList.stream().sorted(animalComparator1).collect(Collectors.toList());
+        List<String> orderedList = animalList.stream().sorted((a,b)-> a.substring(1).compareTo(b.substring(1))).collect(Collectors.toList());
+        System.out.println(orderedList);
     }
+
+
+
 }
 
 class Employee {
