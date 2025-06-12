@@ -64,7 +64,7 @@ class JavaConcurrencyEx2 implements Runnable {
 
 class JavaConcurrencyEx3Future  {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args)  {
 
 
 
@@ -91,26 +91,46 @@ class JavaConcurrencyEx3Future  {
         executor.execute(sumExtServiceFutTask);
         executor.execute(productExtServiceFutTask);
 
-
-
         // Checks for future task completion and further processing
 
         while (true) {
             if (sumExtServiceFutTask.isDone() && productExtServiceFutTask.isDone()) {
                 System.out.println("Completed executor service");
-                System.out.println("Sum results :: " + sumExtServiceFutTask.get());
-                System.out.println("Product results :: " + productExtServiceFutTask.get());
-                return;
+                try {
+                    System.out.println("Sum results :: " + sumExtServiceFutTask.get());
+                    System.out.println("Product results :: " + productExtServiceFutTask.get());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+
             }
             if(sumExtServiceFutTask.isCancelled() || productExtServiceFutTask.isCancelled() ){
                 System.out.println("One or more Executor service is cancelled");
             }
 
-
-
         }
 
+        ExecutorService executorService = Executors.newFixedThreadPool(2); //Executor Service instead of Executor
+        Future<Integer> futureSum = executorService.submit(sumService);
+        Future<Integer> futureMul = executorService.submit(productService);
 
+        try {
+            System.out.println(futureMul.get());
+            System.out.println(futureSum.get());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(1 ,TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
@@ -136,7 +156,7 @@ class SumExternalService extends ArithmeticExtService {
     }
 
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         Thread.sleep(15000);
         return num1+num2;
     }
@@ -150,7 +170,7 @@ class ProductExternalService extends ArithmeticExtService {
     }
 
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         Thread.sleep(10000);
         return num1 * num2;
     }
