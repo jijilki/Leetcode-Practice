@@ -18,6 +18,63 @@ public class CodilitySamples {
         System.out.println(findLeaderBoyerMooreAlgo(leaderArray));
         System.out.println("max profit :: for "+ Arrays.toString(stockArray1) +"is "  + findMaxProfitFromStock(stockArray1));
         System.out.println("max profit :: for "+ Arrays.toString(stockArray2) +"is "  +findMaxProfitFromStock(stockArray2));
+
+        System.out.println(maxBinaryGap(328));
+        System.out.println(Arrays.toString(rotatedArray(new int[]{3, 8, 9, 7, 6}, 3)));
+        int x = 10;
+        int y =85 ;
+        int d = 30;
+        System.out.println(frogJump(x,y,d));
+    }
+
+    // 100% score in codility
+    private static int frogJump(int X, int Y, int D) {
+
+        int minJump =   (Y-X) % D == 0 ? (Y-X) / D : (Y-X)/D + 1;
+        System.out.println(minJump);
+        return minJump;
+
+    }
+
+    private static int[] rotatedArray(int[] A, int K) {
+
+            int length = A.length;
+            if(length == 0 || K % length == 0) {
+                return A;
+            }
+
+            int[] rotatedArray = new int[length];
+            int rotation = K % length;
+
+            for(int i = 0; i < length; i++) {
+                int newIndex = (i + rotation) % length;
+                rotatedArray[newIndex] = A[i];
+            }
+
+            return rotatedArray;
+
+    }
+
+    private static int maxBinaryGap(int N) {
+        int maxGap = 0;
+        int currentGap = -1; // use -1 to indicate "not started"
+
+        String binary = Integer.toBinaryString(N);
+        System.out.println(binary);
+
+        for (char ch : binary.toCharArray()) {
+            if (ch == '1') {
+                if (currentGap > maxGap) {
+                    maxGap = currentGap;
+                }
+                currentGap = 0; // start counting anew
+            } else if (ch == '0') {
+                if (currentGap != -1) {
+                    currentGap++;
+                }
+            }
+        }
+        return maxGap;
     }
 
     private static int findMaxProfitFromStock(int[] stockArray) {
